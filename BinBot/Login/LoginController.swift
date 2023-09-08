@@ -335,12 +335,12 @@ extension LoginVC {
                     if btnMark.currentBackgroundImage == UIImage(named: "mark") && btn1.alpha == 1 {
                         let alertError = UIAlertController(title: "RememberData".localize(), message: nil, preferredStyle: .alert)
                         alertError.addAction(UIAlertAction(title: "Yes".localize(), style: .default, handler: { [self](action: UIAlertAction!) in
-//                            UserDefaults.standard.set(emailTextField.text, forKey: UserData.SettingsKeys.login.rawValue)
-//                            UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.showedAuth.rawValue)
+                            UserDefaults.standard.set(emailTextField.text, forKey: UserData.SettingsKeys.login.rawValue)
+                            UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.showedAuth.rawValue)
                             let vc = TabBarController()
                             vc.modalPresentationStyle = .fullScreen
                             self.present(vc, animated: false)
-//                            UserDefaults.standard.set(self.emailTextField.text, forKey: UserData.SettingsKeys.login.rawValue)
+                            UserDefaults.standard.set(self.emailTextField.text, forKey: UserData.SettingsKeys.login.rawValue)
                         }))
                         alertError.addAction(UIAlertAction(title: "No".localize(), style: .default, handler: {(action: UIAlertAction!) in
                             let vc = TabBarController()
