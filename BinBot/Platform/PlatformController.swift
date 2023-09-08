@@ -5,152 +5,165 @@ class PlatformController: UIViewController, UITextFieldDelegate {
     private lazy var chart = WKWebView()
 
     private lazy var labelBalance: UITextField = {
-        let labelBalance = UITextField()
-        labelBalance.text = "\(UserData.balance)"
-        labelBalance.textAlignment = .left
-        labelBalance.keyboardType = .decimalPad
-        labelBalance.textColor = .white
-        labelBalance.font = .systemFont(ofSize: 18, weight: .bold)
-
-        return labelBalance
+        let view = UITextField()
+        view.text = "\(UserData.balance)"
+        view.textAlignment = .left
+        view.keyboardType = .decimalPad
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 18, weight: .bold)
+        return view
     }()
 
     private let titleBalance: UILabel = {
-        let titleBalance = UILabel()
-        titleBalance.textAlignment = .left
-        titleBalance.textColor = UIColor(red: 0.58, green: 0.61, blue: 0.66, alpha: 0.6)
-        titleBalance.font = .systemFont(ofSize: 11, weight: .medium)
-        titleBalance.text = "trade.balance".localize()
+        let view = UILabel()
+        view.textAlignment = .left
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.font = .systemFont(ofSize: 11, weight: .regular)
+        view.text = "trade.balance".localize()
+        return view
+    }()
 
-        return titleBalance
+    private lazy var imgDeposit: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "add")
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapDeposit)))
+        return view
+    }()
+
+    private lazy var assetView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 12
+        view.backgroundColor = UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1)
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapPair)))
+
+        return view
+    }()
+
+    private let tradingAssetTitle: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .left
+        view.textColor = UIColor(red: 0.525, green: 0.533, blue: 0.58, alpha: 1)
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.text = "trade.choose".localize()
+        return view
     }()
 
     private lazy var pairLabel: UILabel = {
-        let pairLabel = UILabel()
-        pairLabel.textAlignment = .center
-        pairLabel.textColor = .white
-        pairLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        pairLabel.isUserInteractionEnabled = true
-        pairLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapPair)))
-
-        return pairLabel
+        let view = UILabel()
+        view.textAlignment = .left
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        return view
     }()
 
     private lazy var imgArrowRight: UIImageView = {
-        let imgArrowRight = UIImageView()
-        imgArrowRight.image = UIImage(named: "rightTrade")
-        imgArrowRight.contentMode = .scaleAspectFit
-        imgArrowRight.isUserInteractionEnabled = true
-        imgArrowRight.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapPair)))
-
-        return imgArrowRight
+        let view = UIImageView()
+        view.image = UIImage(named: "rightTrade")
+        view.contentMode = .scaleAspectFit
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapPair)))
+        return view
     }()
 
     private let investment: UIView = {
-        let investment = UIView()
-        investment.layer.cornerRadius = 6
-        investment.backgroundColor = UIColor(red: 0.14, green: 0.19, blue: 0.28, alpha: 1)
-
-        return investment
+        let view = UIView()
+        view.layer.cornerRadius = 12
+        view.backgroundColor = UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1)
+        return view
     }()
 
     private let investmentVal: UITextField = {
-        let investmentVal = UITextField()
-        investmentVal.textAlignment = .center
-        investmentVal.isUserInteractionEnabled = false
-        investmentVal.keyboardType = .numbersAndPunctuation
-        investmentVal.textColor = .white
-        investmentVal.font = .systemFont(ofSize: 16, weight: .semibold)
-        investmentVal.text = "100"
+        let view = UITextField()
+        view.textAlignment = .center
+        view.isUserInteractionEnabled = false
+        view.keyboardType = .numbersAndPunctuation
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 16, weight: .semibold)
+        view.text = "100"
+        return view
+    }()
 
-        return investmentVal
+    private let investmentTitle: UILabel = {
+        let view = UILabel()
+        view.textAlignment = .center
+        view.textColor = UIColor(red: 0.525, green: 0.533, blue: 0.58, alpha: 1)
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.text = "Amount".localize()
+        return view
     }()
 
     private lazy var plusInv: UIButton = {
-        let plusInv = UIButton()
-        plusInv.isUserInteractionEnabled = true
-        plusInv.layer.cornerRadius = 6
-        plusInv.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        plusInv.backgroundColor = UIColor(red: 0.125, green: 0.137, blue: 0.184, alpha: 0.8)
-        plusInv.setImage(UIImage(named: "plus"), for: .normal)
-        plusInv.addTarget(self, action: #selector(tapPlusMinus), for: .touchUpInside)
-
-        return plusInv
+        let view = UIButton()
+        view.isUserInteractionEnabled = true
+        view.setImage(UIImage(named: "plus"), for: .normal)
+        view.addTarget(self, action: #selector(tapPlusMinus), for: .touchUpInside)
+        return view
     }()
 
     private lazy var minusInv: UIButton = {
-        let minusInv = UIButton()
-        minusInv.isUserInteractionEnabled = true
-        minusInv.layer.cornerRadius = 6
-        minusInv.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        minusInv.backgroundColor = UIColor(red: 0.125, green: 0.137, blue: 0.184, alpha: 0.8)
-        minusInv.setImage(UIImage(named: "minus"), for: .normal)
-        minusInv.addTarget(self, action: #selector(tapPlusMinus), for: .touchUpInside)
-
-        return minusInv
+        let view = UIButton()
+        view.isUserInteractionEnabled = true
+        view.setImage(UIImage(named: "minus"), for: .normal)
+        view.addTarget(self, action: #selector(tapPlusMinus), for: .touchUpInside)
+        return view
     }()
 
     private lazy var sellView: UIView = {
-        let sellView = UIView()
-        sellView.layer.cornerRadius = 6
-        sellView.backgroundColor = UIColor(red: 0.95, green: 0.32, blue: 0.19, alpha: 1)
-        let gestureSell = UITapGestureRecognizer(target: self, action: #selector(sellAction))
-        sellView.addGestureRecognizer(gestureSell)
-        sellView.isUserInteractionEnabled = true
-
-        return sellView
+        let view = UIView()
+        view.layer.cornerRadius = 6
+        view.backgroundColor = UIColor(red: 0.95, green: 0.32, blue: 0.19, alpha: 1)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sellAction)))
+        view.isUserInteractionEnabled = true
+        return view
     }()
 
     private let sellLbl: UILabel = {
-        let sellLbl = UILabel()
-        sellLbl.textAlignment = .left
-        sellLbl.textColor = .white
-        sellLbl.font = .systemFont(ofSize: 14, weight: .bold)
-        sellLbl.text = "trade.down".localize()
-
-        return sellLbl
+        let view = UILabel()
+        view.textAlignment = .left
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 14, weight: .bold)
+        view.text = "trade.down".localize()
+        return view
     }()
 
     private let sellImg: UIImageView = {
-        let sellImg = UIImageView()
-        sellImg.contentMode = .scaleAspectFit
-        sellImg.image = UIImage(named: "downImg")
-
-        return sellImg
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "downImg")
+        return view
     }()
 
     private lazy var buyView: UIView = {
-        let buyView = UIView()
-        buyView.backgroundColor = UIColor(red: 0.12, green: 0.75, blue: 0.46, alpha: 1)
-        buyView.layer.cornerRadius = 6
-        let gestureBuy = UITapGestureRecognizer(target: self, action: #selector(buyAction))
-        buyView.addGestureRecognizer(gestureBuy)
-        buyView.isUserInteractionEnabled = true
-
-        return buyView
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.12, green: 0.75, blue: 0.46, alpha: 1)
+        view.layer.cornerRadius = 6
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyAction)))
+        view.isUserInteractionEnabled = true
+        return view
     }()
 
     private let buyLbl: UILabel = {
-        let buyLbl = UILabel()
-        buyLbl.textAlignment = .left
-        buyLbl.textColor = .white
-        buyLbl.font = .systemFont(ofSize: 14, weight: .bold)
-        buyLbl.text = "trade.up".localize()
-
-        return buyLbl
+        let view = UILabel()
+        view.textAlignment = .left
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 14, weight: .bold)
+        view.text = "trade.up".localize()
+        return view
     }()
 
     private let buyImg: UIImageView = {
-        let buyImg = UIImageView()
-        buyImg.contentMode = .scaleAspectFit
-        buyImg.image = UIImage(named: "upImg")
-
-        return buyImg
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "upImg")
+        return view
     }()
 
     private lazy var chartView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.05, green: 0.06, blue: 0.07, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
         return view
     }()
 
@@ -158,14 +171,13 @@ class PlatformController: UIViewController, UITextFieldDelegate {
     private var initialState = true
     private var timer: Timer?
     private var price = 0.0
-
-    private var timerValue = 1
     private var invValue = 100.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0.05, green: 0.06, blue: 0.07, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
         navigationController?.navigationBar.isHidden = true
+
         setupViews()
         makeConstraints()
 
@@ -178,39 +190,46 @@ class PlatformController: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         if initialState, let pair = pair {
-            let content = TradingView(width: chart.frame.width - 20.0, height: view.safeAreaLayoutGuide.layoutFrame.height - 290.0, symbol: pair.0).getHTMLContent()
+            let content = TradingView(width: chart.frame.width - 20.0, height: chart.frame.height, symbol: pair.0).getHTMLContent()
             chart.loadHTMLString(content, baseURL: nil)
             initialState = false
         }
 
         if timer == nil {
-            animationStart()
-        }
+            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+                guard let self = self, let pair = self.pair else {
+                    timer.invalidate()
+                    return
+                }
 
-        UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.showedTrade.rawValue)
+                let sign = Bool.random() ? 1.0 : -1.0
+                self.price = pair.1 + pair.1 * Double.random(in: 0.0 ..< 0.0029) * sign
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        labelBalance.text = "\(UserData.balance)"
+        UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.showedTrade.rawValue)
+        labelBalance.text = "\(UserData.balance) Đ"
     }
 
     private func setupViews() {
         view.addSubviews(chart, chartView)
-        view.addSubviews(titleBalance, investment, sellView, buyView, labelBalance, pairLabel, imgArrowRight)
-        investment.addSubviews(investmentVal, plusInv, minusInv)
+        view.addSubviews(titleBalance, investment, sellView, buyView, labelBalance, assetView, imgDeposit)
+        investment.addSubviews(investmentVal, plusInv, minusInv, investmentTitle)
         sellView.addSubviews(sellLbl, sellImg)
         buyView.addSubviews(buyLbl, buyImg)
+        assetView.addSubviews(tradingAssetTitle, pairLabel, imgArrowRight)
     }
 
     private func makeConstraints() {
         sellView.translatesAutoresizingMaskIntoConstraints = false
-        sellView.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 5.5).isActive = true
-        sellView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        sellView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        sellView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -2).isActive = true
         sellView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
-        sellView.heightAnchor.constraint(equalToConstant: 37).isActive = true
+        sellView.heightAnchor.constraint(equalToConstant: 54).isActive = true
 
         sellImg.translatesAutoresizingMaskIntoConstraints = false
         sellImg.centerYAnchor.constraint(equalTo: sellView.centerYAnchor).isActive = true
@@ -224,10 +243,10 @@ class PlatformController: UIViewController, UITextFieldDelegate {
         sellLbl.leadingAnchor.constraint(equalTo: sellView.leadingAnchor, constant: 16).isActive = true
 
         buyView.translatesAutoresizingMaskIntoConstraints = false
-        buyView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        buyView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -5.5).isActive = true
+        buyView.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 2).isActive = true
+        buyView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         buyView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
-        buyView.heightAnchor.constraint(equalToConstant: 37).isActive = true
+        buyView.heightAnchor.constraint(equalToConstant: 54).isActive = true
 
         buyImg.translatesAutoresizingMaskIntoConstraints = false
         buyImg.centerYAnchor.constraint(equalTo: buyView.centerYAnchor).isActive = true
@@ -242,28 +261,31 @@ class PlatformController: UIViewController, UITextFieldDelegate {
 
         plusInv.translatesAutoresizingMaskIntoConstraints = false
         plusInv.centerYAnchor.constraint(equalTo: investment.centerYAnchor).isActive = true
-        plusInv.trailingAnchor.constraint(equalTo: investment.trailingAnchor).isActive = true
-        plusInv.topAnchor.constraint(equalTo: investment.topAnchor).isActive = true
-        plusInv.bottomAnchor.constraint(equalTo: investment.bottomAnchor).isActive = true
-        plusInv.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        plusInv.trailingAnchor.constraint(equalTo: investment.trailingAnchor, constant: -20).isActive = true
+        plusInv.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        plusInv.heightAnchor.constraint(equalToConstant: 32).isActive = true
 
         minusInv.translatesAutoresizingMaskIntoConstraints = false
         minusInv.centerYAnchor.constraint(equalTo: investment.centerYAnchor).isActive = true
-        minusInv.leadingAnchor.constraint(equalTo: investment.leadingAnchor).isActive = true
-        minusInv.topAnchor.constraint(equalTo: investment.topAnchor).isActive = true
-        minusInv.bottomAnchor.constraint(equalTo: investment.bottomAnchor).isActive = true
-        minusInv.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        minusInv.leadingAnchor.constraint(equalTo: investment.leadingAnchor, constant: 20).isActive = true
+        minusInv.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        minusInv.heightAnchor.constraint(equalToConstant: 32).isActive = true
 
         investment.translatesAutoresizingMaskIntoConstraints = false
-        investment.bottomAnchor.constraint(equalTo: sellView.topAnchor, constant: -23).isActive = true
+        investment.bottomAnchor.constraint(equalTo: sellView.topAnchor, constant: -15).isActive = true
         investment.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         investment.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-        investment.heightAnchor.constraint(equalToConstant: 37).isActive = true
+        investment.heightAnchor.constraint(equalToConstant: 55).isActive = true
 
         investmentVal.translatesAutoresizingMaskIntoConstraints = false
-        investmentVal.centerYAnchor.constraint(equalTo: investment.centerYAnchor).isActive = true
+        investmentVal.topAnchor.constraint(equalTo: investment.centerYAnchor).isActive = true
         investmentVal.leadingAnchor.constraint(equalTo: investment.leadingAnchor, constant: 30).isActive = true
         investmentVal.trailingAnchor.constraint(equalTo: investment.trailingAnchor, constant: -30).isActive = true
+
+        investmentTitle.translatesAutoresizingMaskIntoConstraints = false
+        investmentTitle.bottomAnchor.constraint(equalTo: investment.centerYAnchor, constant: -3).isActive = true
+        investmentTitle.leadingAnchor.constraint(equalTo: investment.leadingAnchor, constant: 30).isActive = true
+        investmentTitle.trailingAnchor.constraint(equalTo: investment.trailingAnchor, constant: -30).isActive = true
 
         titleBalance.translatesAutoresizingMaskIntoConstraints = false
         titleBalance.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
@@ -273,19 +295,36 @@ class PlatformController: UIViewController, UITextFieldDelegate {
         labelBalance.topAnchor.constraint(equalTo: titleBalance.bottomAnchor, constant: 5).isActive = true
         labelBalance.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
 
+        imgDeposit.translatesAutoresizingMaskIntoConstraints = false
+        imgDeposit.centerYAnchor.constraint(equalTo: labelBalance.centerYAnchor).isActive = true
+        imgDeposit.leadingAnchor.constraint(equalTo: labelBalance.trailingAnchor, constant: 8).isActive = true
+        imgDeposit.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        imgDeposit.widthAnchor.constraint(equalToConstant: 20).isActive = true
+
+
+        assetView.translatesAutoresizingMaskIntoConstraints = false
+        assetView.bottomAnchor.constraint(equalTo: investment.topAnchor, constant: -12).isActive = true
+        assetView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        assetView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        assetView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+
         pairLabel.translatesAutoresizingMaskIntoConstraints = false
-        pairLabel.bottomAnchor.constraint(equalTo: investment.topAnchor, constant: -80).isActive = true
-        pairLabel.leadingAnchor.constraint(equalTo: chartView.leadingAnchor, constant: 12).isActive = true
+        pairLabel.topAnchor.constraint(equalTo: assetView.centerYAnchor).isActive = true
+        pairLabel.leadingAnchor.constraint(equalTo: assetView.leadingAnchor, constant: 20).isActive = true
+
+        tradingAssetTitle.translatesAutoresizingMaskIntoConstraints = false
+        tradingAssetTitle.bottomAnchor.constraint(equalTo: assetView.centerYAnchor, constant: -3).isActive = true
+        tradingAssetTitle.leadingAnchor.constraint(equalTo: assetView.leadingAnchor, constant: 20).isActive = true
 
         imgArrowRight.translatesAutoresizingMaskIntoConstraints = false
-        imgArrowRight.centerYAnchor.constraint(equalTo: pairLabel.centerYAnchor).isActive = true
-        imgArrowRight.leadingAnchor.constraint(equalTo: pairLabel.trailingAnchor, constant: 15).isActive = true
+        imgArrowRight.centerYAnchor.constraint(equalTo: assetView.centerYAnchor).isActive = true
+        imgArrowRight.trailingAnchor.constraint(equalTo: assetView.trailingAnchor, constant: -16).isActive = true
         imgArrowRight.heightAnchor.constraint(equalToConstant: 24).isActive = true
         imgArrowRight.widthAnchor.constraint(equalToConstant: 24).isActive = true
 
         chart.translatesAutoresizingMaskIntoConstraints = false
         chart.topAnchor.constraint(equalTo: labelBalance.bottomAnchor, constant: 25).isActive = true
-        chart.bottomAnchor.constraint(equalTo: pairLabel.topAnchor, constant: -1).isActive = true
+        chart.bottomAnchor.constraint(equalTo: assetView.topAnchor, constant: -30).isActive = true
         chart.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         chart.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
@@ -329,7 +368,7 @@ extension PlatformController {
     @objc func doneButtonAction() {
         let balance = Int(labelBalance.text!)
         UserDefaults.standard.set(balance, forKey: UserData.SettingsKeys.balance.rawValue)
-        self.labelBalance.text = "\(UserData.balance)"
+        self.labelBalance.text = "\(UserData.balance) Đ"
         labelBalance.resignFirstResponder()
     }
 
@@ -340,16 +379,16 @@ extension PlatformController {
             var balance = UserData.balance
             balance = balance + Int(self.invValue + sign * profit * amount)
             UserDefaults.standard.set(balance, forKey: UserData.SettingsKeys.balance.rawValue)
-            self.labelBalance.text = "\(UserData.balance)"
+            self.labelBalance.text = "\(UserData.balance) Đ"
         }
     }
 
     @objc private func sellAction() {
-        showToast(message: "trade.open1".localize() + "\(timerValue) minutes. " + "trade.open2".localize() + "\(round(price * 100000) / 100000.0)")
+        showToast(message: "trade.open1".localize() + "\(1) minute. " + "trade.open2".localize() + "\(round(price * 100000) / 100000.0)")
         taskForPair(amount: Double(invValue))
 
         UserDefaults.standard.set((UserData.balance - Int(invValue)), forKey: UserData.SettingsKeys.balance.rawValue)
-        self.labelBalance.text = "\(UserData.balance)"
+        self.labelBalance.text = "\(UserData.balance) Đ"
         if Int(invValue) > UserData.balance {
             invValue = 0
             investmentVal.text = "\(Int(invValue))"
@@ -357,16 +396,21 @@ extension PlatformController {
     }
 
     @objc private func buyAction() {
-        showToast(message: "trade.open1".localize() + "\(timerValue) minutes. " + "trade.open2".localize() + "\(round(price * 100000) / 100000.0)")
+        showToast(message: "trade.open1".localize() + "\(1) minute. " + "trade.open2".localize() + "\(round(price * 100000) / 100000.0)")
         taskForPair(amount: Double(invValue))
 
 
         UserDefaults.standard.set((UserData.balance - Int(invValue)), forKey: UserData.SettingsKeys.balance.rawValue)
-        self.labelBalance.text = "\(UserData.balance)"
+        self.labelBalance.text = "\(UserData.balance) Đ"
         if Int(invValue) > UserData.balance {
             invValue = 0
             investmentVal.text = "\(Int(invValue))"
         }
+    }
+
+    @objc private func tapDeposit() {
+        let vc = DepositController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc private func tapPair() {
@@ -388,17 +432,4 @@ extension PlatformController {
         default: break
         }
     }
-
-    private func animationStart() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            guard let self = self, let pair = self.pair else {
-                timer.invalidate()
-                return
-            }
-
-            let sign = Bool.random() ? 1.0 : -1.0
-            self.price = pair.1 + pair.1 * Double.random(in: 0.0 ..< 0.0029) * sign
-        }
-    }
 }
-

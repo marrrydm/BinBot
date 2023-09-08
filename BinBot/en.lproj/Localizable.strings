@@ -38,3 +38,25 @@
 "tabbar.robot" = "Bot";
 "tabbar.support" = "Support";
 "tabbar.account" = "Account";
+
+"trade.balance" = "Balance";
+"trade.down" = "Down";
+"trade.up" = "Up";
+"trade.choose" = "Trading asset";
+"minute" = "minute";
+"trade.open1" = "Trade will closed after ";
+"trade.open2" = "Open price: ";
+"Deposit" = "Deposit";
+"Demo account" = "Demo account";
+"Registration" = "Registration";
+"reg.description" = "You are now seeing the demo mode, to open the Platform you need to register";
+"Amount" = "Amount";
+
+"account.policy" = "Privacy Policy";
+"account.terms" = "Terms of use";
+"account.logout" = "Log out";
+"account.delete" = "Delete account";
+"DeleteData" = "Are you sure you want to delete your account?";
+"Yes" = "Yes";
+"No" = "No";
+"Log out" = "Log out";

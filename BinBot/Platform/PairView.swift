@@ -38,7 +38,6 @@ class PairViewController: UIViewController {
     }()
 
     private let pairs = Array(BinBotContent.shared.pairs.keys)
-    private var data = ""
 
     var pair: String?
     weak var delegate: PairDelegate?
@@ -46,7 +45,7 @@ class PairViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        view.backgroundColor = UIColor(red: 0.05, green: 0.06, blue: 0.07, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
         view.addSubviews(titleLabel, leftBarButton, collectionView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +86,7 @@ extension PairViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (collectionView.frame.width), height: 42)
+        CGSize(width: (collectionView.frame.width), height: 48)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

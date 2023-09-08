@@ -9,7 +9,7 @@ final class TradingView {
     private let chartPrototype = """
     <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <body bgcolor="#0E0F12">
+    <body bgcolor="2A2B30">
     <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
       <div id="tradingview_bdc2c"></div>

@@ -23,6 +23,7 @@
 		F8006D8D2AAB5AA0004C2DC3 /* BotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D8C2AAB5AA0004C2DC3 /* BotController.swift */; };
 		F8006D902AAB5AF5004C2DC3 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */; };
 		F8006D932AAB5B31004C2DC3 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D922AAB5B31004C2DC3 /* AccountController.swift */; };
+		F8006D952AAB6C55004C2DC3 /* DepositController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D942AAB6C55004C2DC3 /* DepositController.swift */; };
 		F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */; };
 		F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */; };
 		F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6332AA88B83004AB0C1 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		F8006D8C2AAB5AA0004C2DC3 /* BotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotController.swift; sourceTree = "<group>"; };
 		F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
 		F8006D922AAB5B31004C2DC3 /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
+		F8006D942AAB6C55004C2DC3 /* DepositController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositController.swift; sourceTree = "<group>"; };
 		F816E62C2AA88B83004AB0C1 /* BinBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,11 +111,12 @@
 		F8006D7E2AAB5949004C2DC3 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				F8006D942AAB6C55004C2DC3 /* DepositController.swift */,
 				F8006D7F2AAB594D004C2DC3 /* PlatformController.swift */,
-				F8006D812AAB59BF004C2DC3 /* BinBotContent.swift */,
-				F8006D832AAB59CC004C2DC3 /* TradingView.swift */,
 				F8006D852AAB59D5004C2DC3 /* PairView.swift */,
 				F8006D872AAB59DF004C2DC3 /* PairCell.swift */,
+				F8006D812AAB59BF004C2DC3 /* BinBotContent.swift */,
+				F8006D832AAB59CC004C2DC3 /* TradingView.swift */,
 				F8006D892AAB59FD004C2DC3 /* UserData.swift */,
 			);
 			path = Platform;
@@ -300,6 +303,7 @@
 				F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */,
 				F8006D8A2AAB59FD004C2DC3 /* UserData.swift in Sources */,
 				F8006D902AAB5AF5004C2DC3 /* SupportController.swift in Sources */,
+				F8006D952AAB6C55004C2DC3 /* DepositController.swift in Sources */,
 				F8006D932AAB5B31004C2DC3 /* AccountController.swift in Sources */,
 				F8006D732AAB3E84004C2DC3 /* OnboardingViewController.swift in Sources */,
 				F8006D712AAB3E7C004C2DC3 /* OnboardingModel.swift in Sources */,

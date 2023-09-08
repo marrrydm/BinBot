@@ -30,13 +30,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         appearance.setTitleTextAttributes(attributesSelected as [NSAttributedString.Key : Any], for: .selected)
     }
 
-    private func getController() -> UIViewController {
-        return UserData.showedTrade ? PlatformController() : LoginVC()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let navBar = UINavigationController(rootViewController: getController())
+        let navBar = UINavigationController(rootViewController: PlatformController())
         navBar.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navBar.navigationBar.shadowImage = UIImage()
         navBar.navigationBar.isTranslucent = true
