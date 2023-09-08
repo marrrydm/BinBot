@@ -11,3 +11,25 @@
 "onb6.title" = "Turn on notifications";
 "onb6.content" = "Watch our trading bot in real time";
 "next" = "Next";
+
+"title.login" = "Login";
+"title.create" = "Create account";
+"email" = "Email";
+"password" = "Password";
+"confirm1" = "I accept the terms of the ";
+"confirm2" = "Client Agreement";
+"confirm3" = "Privacy Policy";
+"confirm4" = "confirm being adult";
+"Yes" = "Yes";
+"No" = "No";
+"Forgot password?" = "Forgot password?";
+"Error" = "Error";
+"Invalid email" = "Invalid email";
+"Invalid password" = "Invalid password";
+"OK" = "OK";
+"RememberData" = "Remember data for automatic authorization?";
+"and" = "and";
+"Sign in" = "Sign in";
+"noAcc" = "No account?";
+"createAcc" = "Create";
+"haveAcc" = "Have an account?";

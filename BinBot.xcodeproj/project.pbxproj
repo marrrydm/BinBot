@@ -13,6 +13,7 @@
 		F8006D732AAB3E84004C2DC3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D722AAB3E84004C2DC3 /* OnboardingViewController.swift */; };
 		F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */; };
 		F8006D782AAB3F76004C2DC3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8006D7A2AAB3F76004C2DC3 /* Localizable.strings */; };
+		F8006D7D2AAB4AC2004C2DC3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D7C2AAB4AC2004C2DC3 /* LoginController.swift */; };
 		F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */; };
 		F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */; };
 		F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6332AA88B83004AB0C1 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		F8006D722AAB3E84004C2DC3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloaderVC.swift; sourceTree = "<group>"; };
 		F8006D792AAB3F76004C2DC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F8006D7C2AAB4AC2004C2DC3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F816E62C2AA88B83004AB0C1 /* BinBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		F8006D7B2AAB495E004C2DC3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F8006D7C2AAB4AC2004C2DC3 /* LoginController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				F8006D712AAB3E7C004C2DC3 /* OnboardingModel.swift in Sources */,
 				F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */,
 				F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */,
+				F8006D7D2AAB4AC2004C2DC3 /* LoginController.swift in Sources */,
 				F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */,
 				F8006D6F2AAB3E6F004C2DC3 /* TabBar.swift in Sources */,
 			);
