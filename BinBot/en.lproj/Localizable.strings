@@ -33,3 +33,8 @@
 "noAcc" = "No account?";
 "createAcc" = "Create";
 "haveAcc" = "Have an account?";
+
+"tabbar.platform" = "Platform";
+"tabbar.robot" = "Bot";
+"tabbar.support" = "Support";
+"tabbar.account" = "Account";

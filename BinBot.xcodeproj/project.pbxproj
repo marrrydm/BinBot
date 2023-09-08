@@ -14,6 +14,15 @@
 		F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */; };
 		F8006D782AAB3F76004C2DC3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8006D7A2AAB3F76004C2DC3 /* Localizable.strings */; };
 		F8006D7D2AAB4AC2004C2DC3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D7C2AAB4AC2004C2DC3 /* LoginController.swift */; };
+		F8006D802AAB594D004C2DC3 /* PlatformController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D7F2AAB594D004C2DC3 /* PlatformController.swift */; };
+		F8006D822AAB59BF004C2DC3 /* BinBotContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D812AAB59BF004C2DC3 /* BinBotContent.swift */; };
+		F8006D842AAB59CC004C2DC3 /* TradingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D832AAB59CC004C2DC3 /* TradingView.swift */; };
+		F8006D862AAB59D5004C2DC3 /* PairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D852AAB59D5004C2DC3 /* PairView.swift */; };
+		F8006D882AAB59DF004C2DC3 /* PairCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D872AAB59DF004C2DC3 /* PairCell.swift */; };
+		F8006D8A2AAB59FD004C2DC3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D892AAB59FD004C2DC3 /* UserData.swift */; };
+		F8006D8D2AAB5AA0004C2DC3 /* BotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D8C2AAB5AA0004C2DC3 /* BotController.swift */; };
+		F8006D902AAB5AF5004C2DC3 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */; };
+		F8006D932AAB5B31004C2DC3 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D922AAB5B31004C2DC3 /* AccountController.swift */; };
 		F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */; };
 		F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */; };
 		F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6332AA88B83004AB0C1 /* ViewController.swift */; };
@@ -31,6 +40,15 @@
 		F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloaderVC.swift; sourceTree = "<group>"; };
 		F8006D792AAB3F76004C2DC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F8006D7C2AAB4AC2004C2DC3 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F8006D7F2AAB594D004C2DC3 /* PlatformController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformController.swift; sourceTree = "<group>"; };
+		F8006D812AAB59BF004C2DC3 /* BinBotContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinBotContent.swift; sourceTree = "<group>"; };
+		F8006D832AAB59CC004C2DC3 /* TradingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingView.swift; sourceTree = "<group>"; };
+		F8006D852AAB59D5004C2DC3 /* PairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairView.swift; sourceTree = "<group>"; };
+		F8006D872AAB59DF004C2DC3 /* PairCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairCell.swift; sourceTree = "<group>"; };
+		F8006D892AAB59FD004C2DC3 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F8006D8C2AAB5AA0004C2DC3 /* BotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotController.swift; sourceTree = "<group>"; };
+		F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
+		F8006D922AAB5B31004C2DC3 /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		F816E62C2AA88B83004AB0C1 /* BinBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +90,6 @@
 		F8006D6D2AAB3E61004C2DC3 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				F8006D6E2AAB3E6F004C2DC3 /* TabBar.swift */,
 				F8006D702AAB3E7C004C2DC3 /* OnboardingModel.swift */,
 				F8006D722AAB3E84004C2DC3 /* OnboardingViewController.swift */,
 				F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */,
@@ -83,9 +100,47 @@
 		F8006D7B2AAB495E004C2DC3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F8006D6E2AAB3E6F004C2DC3 /* TabBar.swift */,
 				F8006D7C2AAB4AC2004C2DC3 /* LoginController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		F8006D7E2AAB5949004C2DC3 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				F8006D7F2AAB594D004C2DC3 /* PlatformController.swift */,
+				F8006D812AAB59BF004C2DC3 /* BinBotContent.swift */,
+				F8006D832AAB59CC004C2DC3 /* TradingView.swift */,
+				F8006D852AAB59D5004C2DC3 /* PairView.swift */,
+				F8006D872AAB59DF004C2DC3 /* PairCell.swift */,
+				F8006D892AAB59FD004C2DC3 /* UserData.swift */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		F8006D8B2AAB5A9C004C2DC3 /* Bot */ = {
+			isa = PBXGroup;
+			children = (
+				F8006D8C2AAB5AA0004C2DC3 /* BotController.swift */,
+			);
+			path = Bot;
+			sourceTree = "<group>";
+		};
+		F8006D8E2AAB5AE9004C2DC3 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F8006D912AAB5B28004C2DC3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F8006D922AAB5B31004C2DC3 /* AccountController.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		F816E6232AA88B83004AB0C1 = {
@@ -109,6 +164,10 @@
 		F816E62E2AA88B83004AB0C1 /* BinBot */ = {
 			isa = PBXGroup;
 			children = (
+				F8006D912AAB5B28004C2DC3 /* Account */,
+				F8006D8E2AAB5AE9004C2DC3 /* Support */,
+				F8006D8B2AAB5A9C004C2DC3 /* Bot */,
+				F8006D7E2AAB5949004C2DC3 /* Platform */,
 				F8006D7B2AAB495E004C2DC3 /* Login */,
 				F8006D6D2AAB3E61004C2DC3 /* Onboarding */,
 				F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */,
@@ -237,13 +296,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8006D862AAB59D5004C2DC3 /* PairView.swift in Sources */,
 				F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */,
+				F8006D8A2AAB59FD004C2DC3 /* UserData.swift in Sources */,
+				F8006D902AAB5AF5004C2DC3 /* SupportController.swift in Sources */,
+				F8006D932AAB5B31004C2DC3 /* AccountController.swift in Sources */,
 				F8006D732AAB3E84004C2DC3 /* OnboardingViewController.swift in Sources */,
 				F8006D712AAB3E7C004C2DC3 /* OnboardingModel.swift in Sources */,
+				F8006D882AAB59DF004C2DC3 /* PairCell.swift in Sources */,
+				F8006D822AAB59BF004C2DC3 /* BinBotContent.swift in Sources */,
 				F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */,
+				F8006D802AAB594D004C2DC3 /* PlatformController.swift in Sources */,
 				F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */,
 				F8006D7D2AAB4AC2004C2DC3 /* LoginController.swift in Sources */,
+				F8006D842AAB59CC004C2DC3 /* TradingView.swift in Sources */,
 				F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */,
+				F8006D8D2AAB5AA0004C2DC3 /* BotController.swift in Sources */,
 				F8006D6F2AAB3E6F004C2DC3 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
