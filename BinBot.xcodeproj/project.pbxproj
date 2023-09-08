@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93DAA7363ED3520F394414CA /* Pods_BinBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F76260DBC027B9A3B309DE /* Pods_BinBot.framework */; };
+		F8006D6F2AAB3E6F004C2DC3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D6E2AAB3E6F004C2DC3 /* TabBar.swift */; };
+		F8006D712AAB3E7C004C2DC3 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D702AAB3E7C004C2DC3 /* OnboardingModel.swift */; };
+		F8006D732AAB3E84004C2DC3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D722AAB3E84004C2DC3 /* OnboardingViewController.swift */; };
+		F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */; };
+		F8006D782AAB3F76004C2DC3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8006D7A2AAB3F76004C2DC3 /* Localizable.strings */; };
 		F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */; };
 		F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */; };
 		F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6332AA88B83004AB0C1 /* ViewController.swift */; };
@@ -15,6 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51F76260DBC027B9A3B309DE /* Pods_BinBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BinBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FA3E607690D172877B08A49 /* Pods-BinBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BinBot.release.xcconfig"; path = "Target Support Files/Pods-BinBot/Pods-BinBot.release.xcconfig"; sourceTree = "<group>"; };
+		A232C87927E7180086B47FD6 /* Pods-BinBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BinBot.debug.xcconfig"; path = "Target Support Files/Pods-BinBot/Pods-BinBot.debug.xcconfig"; sourceTree = "<group>"; };
+		F8006D6E2AAB3E6F004C2DC3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		F8006D702AAB3E7C004C2DC3 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		F8006D722AAB3E84004C2DC3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloaderVC.swift; sourceTree = "<group>"; };
+		F8006D792AAB3F76004C2DC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F816E62C2AA88B83004AB0C1 /* BinBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,17 +43,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93DAA7363ED3520F394414CA /* Pods_BinBot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01CA8D60F89CDD30CF1A40E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A232C87927E7180086B47FD6 /* Pods-BinBot.debug.xcconfig */,
+				7FA3E607690D172877B08A49 /* Pods-BinBot.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2807C3C527D5FBB04AA4E56B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51F76260DBC027B9A3B309DE /* Pods_BinBot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F8006D6D2AAB3E61004C2DC3 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F8006D6E2AAB3E6F004C2DC3 /* TabBar.swift */,
+				F8006D702AAB3E7C004C2DC3 /* OnboardingModel.swift */,
+				F8006D722AAB3E84004C2DC3 /* OnboardingViewController.swift */,
+				F8006D742AAB3E8F004C2DC3 /* PreloaderVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F8006D7B2AAB495E004C2DC3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		F816E6232AA88B83004AB0C1 = {
 			isa = PBXGroup;
 			children = (
 				F816E62E2AA88B83004AB0C1 /* BinBot */,
 				F816E62D2AA88B83004AB0C1 /* Products */,
+				01CA8D60F89CDD30CF1A40E0 /* Pods */,
+				2807C3C527D5FBB04AA4E56B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,12 +106,15 @@
 		F816E62E2AA88B83004AB0C1 /* BinBot */ = {
 			isa = PBXGroup;
 			children = (
+				F8006D7B2AAB495E004C2DC3 /* Login */,
+				F8006D6D2AAB3E61004C2DC3 /* Onboarding */,
 				F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */,
 				F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */,
 				F816E6332AA88B83004AB0C1 /* ViewController.swift */,
 				F816E6382AA88B85004AB0C1 /* Assets.xcassets */,
 				F816E63A2AA88B85004AB0C1 /* LaunchScreen.storyboard */,
 				F816E63D2AA88B85004AB0C1 /* Info.plist */,
+				F8006D7A2AAB3F76004C2DC3 /* Localizable.strings */,
 			);
 			path = BinBot;
 			sourceTree = "<group>";
@@ -71,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F816E6402AA88B85004AB0C1 /* Build configuration list for PBXNativeTarget "BinBot" */;
 			buildPhases = (
+				28521A8C08BAC39572A519EB /* [CP] Check Pods Manifest.lock */,
 				F816E6282AA88B83004AB0C1 /* Sources */,
 				F816E6292AA88B83004AB0C1 /* Frameworks */,
 				F816E62A2AA88B83004AB0C1 /* Resources */,
+				C96A5EBCD8A6950A0A7701CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,11 +180,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				F816E63C2AA88B85004AB0C1 /* LaunchScreen.storyboard in Resources */,
+				F8006D782AAB3F76004C2DC3 /* Localizable.strings in Resources */,
 				F816E6392AA88B85004AB0C1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28521A8C08BAC39572A519EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BinBot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C96A5EBCD8A6950A0A7701CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BinBot/Pods-BinBot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BinBot/Pods-BinBot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BinBot/Pods-BinBot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F816E6282AA88B83004AB0C1 /* Sources */ = {
@@ -135,14 +235,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */,
+				F8006D732AAB3E84004C2DC3 /* OnboardingViewController.swift in Sources */,
+				F8006D712AAB3E7C004C2DC3 /* OnboardingModel.swift in Sources */,
 				F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */,
+				F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */,
 				F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */,
+				F8006D6F2AAB3E6F004C2DC3 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F8006D7A2AAB3F76004C2DC3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8006D792AAB3F76004C2DC3 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F816E63A2AA88B85004AB0C1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -270,6 +382,7 @@
 		};
 		F816E6412AA88B85004AB0C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A232C87927E7180086B47FD6 /* Pods-BinBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,6 +414,7 @@
 		};
 		F816E6422AA88B85004AB0C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FA3E607690D172877B08A49 /* Pods-BinBot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
