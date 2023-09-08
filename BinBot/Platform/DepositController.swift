@@ -71,7 +71,7 @@ class DepositController: UIViewController {
         return view
     }()
 
-    private var updateImg: UIImageView = {
+    private lazy var updateImg: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "update")
         view.contentMode = .scaleAspectFit

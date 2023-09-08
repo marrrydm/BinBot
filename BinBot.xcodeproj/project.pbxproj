@@ -24,6 +24,7 @@
 		F8006D902AAB5AF5004C2DC3 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */; };
 		F8006D932AAB5B31004C2DC3 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D922AAB5B31004C2DC3 /* AccountController.swift */; };
 		F8006D952AAB6C55004C2DC3 /* DepositController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D942AAB6C55004C2DC3 /* DepositController.swift */; };
+		F8006D972AAB7844004C2DC3 /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8006D962AAB7844004C2DC3 /* QuizController.swift */; };
 		F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */; };
 		F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */; };
 		F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6332AA88B83004AB0C1 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
 		F8006D922AAB5B31004C2DC3 /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		F8006D942AAB6C55004C2DC3 /* DepositController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositController.swift; sourceTree = "<group>"; };
+		F8006D962AAB7844004C2DC3 /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
 		F816E62C2AA88B83004AB0C1 /* BinBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F816E62F2AA88B83004AB0C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F816E6312AA88B83004AB0C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				F8006D8F2AAB5AF5004C2DC3 /* SupportController.swift */,
+				F8006D962AAB7844004C2DC3 /* QuizController.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */,
 				F8006D7D2AAB4AC2004C2DC3 /* LoginController.swift in Sources */,
 				F8006D842AAB59CC004C2DC3 /* TradingView.swift in Sources */,
+				F8006D972AAB7844004C2DC3 /* QuizController.swift in Sources */,
 				F816E6322AA88B83004AB0C1 /* SceneDelegate.swift in Sources */,
 				F8006D8D2AAB5AA0004C2DC3 /* BotController.swift in Sources */,
 				F8006D6F2AAB3E6F004C2DC3 /* TabBar.swift in Sources */,

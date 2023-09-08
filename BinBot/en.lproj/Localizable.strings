@@ -60,3 +60,56 @@
 "Yes" = "Yes";
 "No" = "No";
 "Log out" = "Log out";
+
+"Quiz" = "Quiz";
+"Continue" = "Continue";
+"description.question" = "Answer 5 questions and test your trading knowledge";
+"Welcome" = "Welcome to the daily quiz";
+"allow" = "A new quiz will appear in";
+
+"quetion1.1" = "Is trading the process of buying and selling financial assets to make a profit?";
+"quetion1.2" = "Can traders participate in both long and short positions in the forex market?";
+"quetion1.3" = "Is technical analysis a method used to analyze historical price charts and predict future price movements?";
+"quetion1.4" = "Do financial news and economic events impact market movements?";
+"quetion1.5" = "Is it common for traders to use technical indicators like moving averages and MACD to make trading decisions?";
+
+"quetion2.1" = "Can traders use support and resistance levels to identify potential entry and exit points?";
+"quetion2.2" = "Is diversification a risk management technique that involves spreading investments across different assets?";
+"quetion2.3" = "Can traders use trailing stop orders to lock in profits as the price moves in their favor?";
+"quetion2.4" = "Is the forex market open 24 hours a day, five days a week?";
+"quetion2.5" = "Can traders use Bollinger Bands to identify potential overbought and oversold conditions?";
+
+"quetion3.1" = "Is leverage used in trading to amplify potential profits and losses?";
+"quetion3.2" = "Do traders use Fibonacci retracement levels to identify potential support and resistance levels?";
+"quetion3.3" = "Is the Moving Average Convergence Divergence (MACD) used to identify trend direction and momentum?";
+"quetion3.4" = "Can traders use the Relative Strength Index (RSI) to measure the speed and change of price movements?";
+"quetion3.5" = "Is risk management crucial to protect capital and survive in the trading market?";
+
+"quetion4.1" = "Can traders use the Parabolic SAR (Stop and Reverse) to identify potential trend reversals?";
+"quetion4.2" = "Is news trading a strategy where traders react to significant economic announcements?";
+"quetion4.3" = "Can traders use the Average True Range (ATR) to measure market volatility?";
+"quetion4.4" = "Is it important to have a trading plan and strategy before entering the market?";
+"quetion4.5" = "Can traders use the Ichimoku Cloud to identify trend direction and potential support and resistance levels?";
+
+"quetion5.1" = "Is the bid price the price at which traders can sell an asset?";
+"quetion5.2" = "Can traders use the Chandelier Exit as a trailing stop indicator to follow the market's trend and protect profits?";
+"quetion5.3" = "Is it possible to trade forex pairs with just a small amount of capital?";
+"quetion5.4" = "Can traders use the Money Flow Index (MFI) to measure the flow of money into and out of an asset?";
+"quetion5.5" = "Is slippage the difference between the expected price of a trade and the actual execution price?";
+
+"quetion6.1" = "Can traders use the On-Balance Volume (OBV) to measure buying and selling pressure?";
+"quetion6.2" = "Is the ask price the price at which traders can buy an asset?";
+"quetion6.3" = "Can traders use the Williams %R to measure overbought and oversold conditions in the market?";
+"quetion6.4" = "Is the Average Directional Index (ADX) used to determine trend strength?";
+"quetion6.5" = "Can traders use the Aroon indicator to identify the strength and direction of a trend?";
+
+"quetion7.1" = "Is scalping a trading strategy that involves making multiple quick trades throughout the day?";
+"quetion7.2" = "Can traders use the Moving Average Envelope to identify potential support and resistance levels?";
+"quetion7.3" = "Is it essential to manage emotions and stick to a trading plan to be successful in trading?";
+"quetion7.4" = "Can traders use the Commodity Channel Index (CCI) to identify potential trend reversals?";
+"quetion7.5" = "Is the Triple Exponential Moving Average (TEMA) used to filter out short-term price fluctuations?";
+
+"Correct" = "Correct";
+"Incorrect" = "Incorrect";
+"Got it" = "Got it";
+
