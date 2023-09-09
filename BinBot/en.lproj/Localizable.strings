@@ -145,3 +145,37 @@
 "Trading asset" = "Trading asset";
 "Strategy" = "Strategy";
 "Risk management" = "Risk management";
+
+"Technical indicators" = "Technical indicators";
+"bg1.content" = "RSI STOCH, STOCHRSI, MACD, ADX, Williams %R, CCI, ATR, Highs/Lows, Ultimate Oscillator, ROC Bull/Bear Power";
+"Moving Averages" = "Moving Averages";
+"bg2.content" = "MA5, MA10, MA20, MA50, MA100, MA200 Simple and Exponential";
+"indicators.content" = "Indicators Summary is based on the decision of the majority moving averages and technical indicators. Unlike individual indicators, this tool has an accuracy of up to 73% percent.";
+"Indicators: Summary" = "Indicators: Summary";
+"mac.content" = "It measures the relationship between 2 EMA. It can confirm when it's the right Time to ouv or sell. Pertorms well with low volatilitv assets like stocks goods and materials.";
+"mac.desc" = "Trend tracing with moving average";
+"sto.content" = "It's based on the idea that closing prices should confirm the trend. It shows if the asset is overbought or oversold. It can perform well on different time frames.";
+"sto.desc" = "Oscillator";
+"bol.content" = "Bollinger Bands is a technical indicator that is composed of a set of lines plotted two standard deviations away from a simple moving average. It is used to indicate potential overbought and oversold conditions.";
+"rs.content" = "Measures price change in relation to recent price highs and lows. It can confirm if the asset is overbought or oversold. Performs better on longer time frames.";
+"cc.content" = "The CCI compares the current price to an average price over a period of time. The indicator fluctuates above or below zero, moving into positive or negative territory.";
+"cl.content" = "The trade is opened depending on the previous closed candle. This indicator can perform better on short time frames.";
+"Off" = "Off";
+
+"Stop the robot" = "Stop the robot";
+"doneBot" = "Are you sure you want to stop the robot?";
+"Cancel" = "Cancel";
+"ai" = "AI Base trading strategy";
+"Custom" = "Custom";
+"Profit:" = "Profit:";
+"Searching" = "Searching";
+"Active" = "Active";
+"Status" = "Status";
+"Expired in" = "Expired in";
+"Indicators" = "Indicators";
+"Number of trades" = "Number of trades";
+"Percentage of profitable trades" = "Percentage of profitable trades";
+"Total profit for the session" = "Total profit for the session";
+"Try on real account" = "Try on real account";
+"congr" = "Congratulations, you have earned on a demo account. You can try trading on a real account";
+"without.reg" = "Continue without registration";

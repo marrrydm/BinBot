@@ -779,7 +779,7 @@ extension BotController {
         strategyLblConfirmVal.text = assetValueLabel.text!
         indicatorsLblConfirmVal.text = titleTopic
         riskLblConfirmVal.text = riskTopic
-        switchControl.isOn ? (profitLblConfirmVal.text = profitLabel.text) : (profitLblConfirmVal.text = "-")
+        switchControl.isOn ? (profitLblConfirmVal.text = profitLabel.text) : (profitLblConfirmVal.text = "Off".localize())
         viewConfirm.isHidden = false
     }
 
@@ -790,6 +790,8 @@ extension BotController {
     @objc private func goNext() {
 //        viewAccount.isHidden = false
         viewConfirm.isHidden = true
+        let vc = RobotController()
+        navigationController?.pushViewController(vc, animated: false)
     }
 
     @objc private func tapOnStrategy() {
@@ -802,7 +804,7 @@ extension BotController {
     }
 
     @objc private func switchAction(sender: UISwitch) {
-        sender.isOn ? (profitLabel.text = "150") : (profitLabel.text = "-")
+        sender.isOn ? (profitLabel.text = "150") : (profitLabel.text = "Off".localize())
     }
 
     @objc private func tapOnView(_ sender: UIButton) {
