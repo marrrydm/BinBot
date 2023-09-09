@@ -122,10 +122,6 @@ class SupportController: UIViewController {
     weak var delegateQuiz: QuizDelegate?
     private var day: Int?
 
-    func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
-        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let date1 = Date()
@@ -143,15 +139,15 @@ class SupportController: UIViewController {
         var newTimeStr2 = "\(abs(newTime.1))"
         var newTimeStr3 = "\(abs(newTime.2))"
 
-        if String(newTime.0).count == 1 {
+        if String(newTime.0).count == 2 || String(newTime.0).count == 1 {
             newTimeStr1 = "0\(abs(newTime.0))"
         }
 
-        if String(newTime.1).count == 1 {
+        if String(newTime.1).count == 2 || String(newTime.1).count == 1 {
             newTimeStr2 = "0\(abs(newTime.1))"
         }
 
-        if String(newTime.2).count == 1 {
+        if String(newTime.2).count == 2 || String(newTime.2).count == 1 {
             newTimeStr3 = "0\(abs(newTime.2))"
         }
 
@@ -266,6 +262,10 @@ class SupportController: UIViewController {
 }
 
 extension SupportController {
+    private func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+
     @objc private func tapButtonNext() {
         let vc = QuizController()
         navigationController?.pushViewController(vc, animated: false)

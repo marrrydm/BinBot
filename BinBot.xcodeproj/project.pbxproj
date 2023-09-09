@@ -30,6 +30,8 @@
 		F816E6342AA88B83004AB0C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F816E6332AA88B83004AB0C1 /* ViewController.swift */; };
 		F816E6392AA88B85004AB0C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F816E6382AA88B85004AB0C1 /* Assets.xcassets */; };
 		F816E63C2AA88B85004AB0C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F816E63A2AA88B85004AB0C1 /* LaunchScreen.storyboard */; };
+		F8337AE32AACA8B600B8B942 /* StrategyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8337AE22AACA8B600B8B942 /* StrategyCell.swift */; };
+		F8337AE52AACBE2B00B8B942 /* StrategyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8337AE42AACBE2B00B8B942 /* StrategyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		F816E6382AA88B85004AB0C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F816E63B2AA88B85004AB0C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F816E63D2AA88B85004AB0C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8337AE22AACA8B600B8B942 /* StrategyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyCell.swift; sourceTree = "<group>"; };
+		F8337AE42AACBE2B00B8B942 /* StrategyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				F8006D8C2AAB5AA0004C2DC3 /* BotController.swift */,
+				F8337AE22AACA8B600B8B942 /* StrategyCell.swift */,
+				F8337AE42AACBE2B00B8B942 /* StrategyController.swift */,
 			);
 			path = Bot;
 			sourceTree = "<group>";
@@ -308,12 +314,14 @@
 				F8006D902AAB5AF5004C2DC3 /* SupportController.swift in Sources */,
 				F8006D952AAB6C55004C2DC3 /* DepositController.swift in Sources */,
 				F8006D932AAB5B31004C2DC3 /* AccountController.swift in Sources */,
+				F8337AE52AACBE2B00B8B942 /* StrategyController.swift in Sources */,
 				F8006D732AAB3E84004C2DC3 /* OnboardingViewController.swift in Sources */,
 				F8006D712AAB3E7C004C2DC3 /* OnboardingModel.swift in Sources */,
 				F8006D882AAB59DF004C2DC3 /* PairCell.swift in Sources */,
 				F8006D822AAB59BF004C2DC3 /* BinBotContent.swift in Sources */,
 				F816E6302AA88B83004AB0C1 /* AppDelegate.swift in Sources */,
 				F8006D802AAB594D004C2DC3 /* PlatformController.swift in Sources */,
+				F8337AE32AACA8B600B8B942 /* StrategyCell.swift in Sources */,
 				F8006D752AAB3E8F004C2DC3 /* PreloaderVC.swift in Sources */,
 				F8006D7D2AAB4AC2004C2DC3 /* LoginController.swift in Sources */,
 				F8006D842AAB59CC004C2DC3 /* TradingView.swift in Sources */,
