@@ -10,6 +10,7 @@ final class UserData {
         case risk
         case profit
         case dateAlgorithmStart
+        case dateStartQuiz
         case userId
         case pairVal
         case sumProfitAfterActive
@@ -19,6 +20,37 @@ final class UserData {
         case showedTrade
         case showedAuth
         case login
+        case dayQuiz
+        case isWorkQuiz
+        case isFirst
+    }
+
+    static var isFirst: Bool {
+        get {
+            guard let savedData = UserDefaults.standard.object(forKey: SettingsKeys.isFirst.rawValue) as? Bool else { return false }
+            return savedData
+        }
+    }
+
+    static var isWorkQuiz: Bool {
+        get {
+            guard let savedData = UserDefaults.standard.object(forKey: SettingsKeys.isWorkQuiz.rawValue) as? Bool else { return false }
+            return savedData
+        }
+    }
+
+    static var dayQuiz: Int {
+        get {
+            guard let savedData = UserDefaults.standard.object(forKey: SettingsKeys.dayQuiz.rawValue) as? Int else { return 0 }
+            return savedData
+        }
+    }
+
+    static var dateStartQuiz: Date? {
+        get {
+            guard let savedData = UserDefaults.standard.object(forKey: SettingsKeys.dateStartQuiz.rawValue) as? Date else { return nil }
+            return savedData
+        }
     }
 
     static var showedAuth: Bool {

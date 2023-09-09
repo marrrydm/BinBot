@@ -17,6 +17,9 @@ class VCLoad: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             let vc = UserDefaults.standard.bool(forKey: "showOnb") == true ? TabBarController() : Onboarding1()
+
+            UserDefaults.standard.bool(forKey: "showOnb") == true ? UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isFirst.rawValue) : UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.isFirst.rawValue)
+
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         })

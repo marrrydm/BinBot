@@ -5,6 +5,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let date = Date()
+        if UserData.dateStartQuiz == nil {
+            UserDefaults.standard.set(date, forKey: UserData.SettingsKeys.dateStartQuiz.rawValue)
+        }
+
+        UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.isWorkQuiz.rawValue)
+
         self.delegate = self
         self.tabBar.backgroundColor = UIColor(red: 0.141, green: 0.149, blue: 0.184, alpha: 1)
         self.tabBar.tintColor = UIColor(red: 0.141, green: 0.149, blue: 0.184, alpha: 1)

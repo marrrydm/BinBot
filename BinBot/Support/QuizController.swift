@@ -208,35 +208,53 @@ class QuizController: UIViewController {
 extension QuizController {
     @objc private func tapButtonNext() {
         if viewYes.layer.borderWidth != 0 || viewNo.layer.borderWidth != 0 {
-            if isStep != 4 && nextButton.alpha == 1 && setTitle {
-                isStep += 1
-                questionLbl.text = lessonsArray[number][isStep].0
-                imgView.image = lessonsArray[number][isStep].2
-
-                viewYes.layer.borderWidth = 0
-                viewNo.layer.borderWidth = 0
-
-                nextButton.alpha = 0.5
-                nextButton.setTitle("Continue".localize(), for: .normal)
-
-                correctLbl.text = ""
-                correctImg.image = UIImage()
-
-                setTitle = false
-            }
-
-            if !setTitle {
-                if isChecked == lessonsArray[number][isStep].1 {
-                    result += 1
-                    correctLbl.text = "Correct".localize()
-                    correctImg.image = UIImage(named: "correct")
-                    nextButton.setTitle("Got it".localize(), for: .normal)
-                    setTitle = true
+            if isStep != 5 && nextButton.alpha == 1  {
+                if !setTitle {
+                    if isChecked == lessonsArray[number][isStep].1   {
+                        result += 1
+                        correctLbl.text = "Correct".localize()
+                        correctImg.image = UIImage(named: "correct")
+                        nextButton.setTitle("Got it".localize(), for: .normal)
+                        setTitle = true
+                        return
+                    } else {
+                        correctLbl.text = "Incorrect".localize()
+                        correctImg.image = UIImage(named: "incorrect")
+                        nextButton.setTitle("Got it".localize(), for: .normal)
+                        setTitle = true
+                        return
+                    }
                 } else {
-                    correctLbl.text = "Incorrect".localize()
-                    correctImg.image = UIImage(named: "incorrect")
-                    nextButton.setTitle("Got it".localize(), for: .normal)
-                    setTitle = true
+                    isStep += 1
+                    if isStep != 5 {
+                        questionLbl.text = lessonsArray[number][isStep].0
+                        imgView.image = lessonsArray[number][isStep].2
+
+                        viewYes.layer.borderWidth = 0
+                        viewNo.layer.borderWidth = 0
+
+                        nextButton.alpha = 0.5
+                        nextButton.setTitle("Continue".localize(), for: .normal)
+
+                        correctLbl.text = ""
+                        correctImg.image = UIImage()
+
+                        setTitle = false
+                    } else {
+                        pop()
+                        if UserDefaults.standard.integer(forKey: "correct") == 0 {
+                            UserDefaults.standard.set(result, forKey: "correct")
+                        }
+
+                        let date = Date()
+                        if UserData.dateStartQuiz == nil {
+                            UserDefaults.standard.set(date, forKey: UserData.SettingsKeys.dateStartQuiz.rawValue)
+                        }
+
+                        UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isWorkQuiz.rawValue)
+
+                        UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isFirst.rawValue)
+                    }
                 }
             }
         }

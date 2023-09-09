@@ -112,4 +112,6 @@
 "Correct" = "Correct";
 "Incorrect" = "Incorrect";
 "Got it" = "Got it";
-
+"passed" = "You have passed the quiz";
+"correctAns" = "Number of correct answers";
+"share" = "Share with friends";
