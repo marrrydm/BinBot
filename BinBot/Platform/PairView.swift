@@ -4,15 +4,14 @@ protocol PairDelegate: AnyObject {
     func updatePair(_ value: String?)
 }
 
-class PairViewController: UIViewController {
+final class PairViewController: UIViewController {
     private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "trade.choose".localize()
-        titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        titleLabel.textColor = .white
-        titleLabel.textAlignment = .left
-
-        return titleLabel
+        let view = UILabel()
+        view.text = "trade.choose".localize()
+        view.font = .systemFont(ofSize: 18, weight: .bold)
+        view.textColor = .white
+        view.textAlignment = .left
+        return view
     }()
 
     private lazy var collectionView: UICollectionView = {
@@ -20,21 +19,19 @@ class PairViewController: UIViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .clear
         view.register(PairCell.self, forCellWithReuseIdentifier: "PairCell")
+        view.showsVerticalScrollIndicator = false
         view.delegate = self
         view.dataSource = self
-        view.showsVerticalScrollIndicator = false
-
         return view
     }()
 
     private lazy var leftBarButton: UIImageView = {
-        let leftBarButton = UIImageView()
-        leftBarButton.image = UIImage(named: "close")
-        leftBarButton.isUserInteractionEnabled = true
-        leftBarButton.contentMode = .scaleAspectFit
-        leftBarButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didLeftBarButtonTapped)))
-
-        return leftBarButton
+        let view = UIImageView()
+        view.image = UIImage(named: "close")
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didLeftBarButtonTapped)))
+        return view
     }()
 
     private let pairs = Array(BinBotContent.shared.pairs.keys)
@@ -46,6 +43,12 @@ class PairViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
+        setupUI()
+    }
+}
+
+private extension PairViewController {
+    func setupUI() {
         view.addSubviews(titleLabel, leftBarButton, collectionView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -63,32 +66,16 @@ class PairViewController: UIViewController {
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 28).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 4).isActive = true
-
-        collectionView.delegate = self
-        collectionView.dataSource = self
     }
+}
 
-    @objc private func didLeftBarButtonTapped(_ sender: Any) {
+private extension PairViewController {
+    @objc func didLeftBarButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: false)
     }
 }
 
-extension PairViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pairs.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PairCell", for: indexPath) as! PairCell
-        cell.configure(pair: pairs[indexPath.row], selected: pairs[indexPath.row] == pair)
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (collectionView.frame.width), height: 48)
-    }
-
+extension PairViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         pair = pairs[indexPath.row]
         collectionView.reloadData()
@@ -96,5 +83,23 @@ extension PairViewController: UICollectionViewDelegate, UICollectionViewDataSour
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.navigationController?.popViewController(animated: false)
         }
+    }
+}
+
+extension PairViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        pairs.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PairCell", for: indexPath) as! PairCell
+        cell.configure(pair: pairs[indexPath.row], selected: pairs[indexPath.row] == pair)
+        return cell
+    }
+}
+
+extension PairViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (collectionView.frame.width), height: 48)
     }
 }

@@ -1,9 +1,9 @@
 import UIKit
 
-class PairCell: UICollectionViewCell {
+final class PairCell: UICollectionViewCell {
     static let id = "Cell"
 
-    var pairLabel: UILabel = {
+    private let pairLabel: UILabel = {
         var view = UILabel()
         view.textColor = .white
         view.font = .systemFont(ofSize: 15, weight: .bold)
@@ -23,58 +23,35 @@ class PairCell: UICollectionViewCell {
         return view
     }()
 
-    private var checkImg: UIImageView = {
+    private let checkImg: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(named: "unchecked")
         return view
     }()
 
-    private var arrImgPairs: [(String, UIImage?)] = [
-        ("EUR/USD", UIImage(named: "EUR:USD")),
-        ("GBP/USD", UIImage(named: "GBP:USD")),
-        ("EUR/CAD", UIImage(named: "EUR:CAD")),
-        ("AUD/CHF", UIImage(named: "AUD:CHF")),
-        ("AUD/CAD", UIImage(named: "AUD:CAD")),
-        ("EUR/GBP", UIImage(named: "EUR:GBP")),
-        ("AUD/JPY", UIImage(named: "AUD:JPY")),
-        ("EUR/JPY", UIImage(named: "EUR:JPY")),
-        ("USD/JPY", UIImage(named: "USD:JPY")),
-        ("CAD/CHF", UIImage(named: "CAD:CHF")),
-        ("NZD/USD", UIImage(named: "NZD:USD")),
-        ("USD/CAD", UIImage(named: "USD:CAD")),
-        ("AUD/USD", UIImage(named: "AUD:USD")),
-        ("CAD/JPY", UIImage(named: "CAD:JPY")),
-        // нужны ли?
-        ("GBP/CHF", UIImage(named: "GBR:CHF")),
-        ("GBP/AUD", UIImage(named: "GBP:AUD")),
-        ("GBP/JPY", UIImage(named: "GBP:JPY")),
-        ("NZD/JPY", UIImage(named: "NZD:JPY")),
-        ("USD/CHF", UIImage(named: "USD:CHF")),
-        ("EUR/CHF", UIImage(named: "EUR:CHF"))
-    ]
-
     func configure(pair: String, selected: Bool) {
+        pairLabel.text = pair.prefix(3) + "/" + pair.suffix(3)
+        checkImg.image = selected ? UIImage(named: "check") :  UIImage(named: "unchecked")
+
+        guard let pair = pairLabel.text else { return }
+        StaticContent.shared.arrayPairs
+            .first { $0.0 == pair }
+            .map { imgPair.image = $0.1 }
+
+        contentView.backgroundColor = selected ? UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1) : .clear
+
+        buttonSelected.isHidden = !selected
+        setupView()
+    }
+}
+
+private extension PairCell {
+    func setupView() {
         self.layer.borderColor = UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1).cgColor
         self.contentView.layer.cornerRadius = 16
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 16
-        self.contentView.backgroundColor = selected ? UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1) : .clear
 
-        checkImg.image = selected ? UIImage(named: "check") :  UIImage(named: "unchecked")
-
-        pairLabel.text = pair.prefix(3) + "/" + pair.suffix(3)
-        let forImg = pairLabel.text!
-        for item in arrImgPairs {
-            if item.0 == forImg {
-                imgPair.image = item.1
-            }
-        }
-        buttonSelected.isHidden = !selected
-        setupView()
-    }
-
-    private func setupView() {
         contentView.addSubviews(pairLabel, imgPair, buttonSelected, checkImg)
         pairLabel.translatesAutoresizingMaskIntoConstraints = false
         checkImg.translatesAutoresizingMaskIntoConstraints = false

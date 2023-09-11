@@ -1,11 +1,10 @@
 import UIKit
 
 struct OnboardingModel {
-    var title: String
-    var description: String
-    var imgProgress: UIImage
-    var img: UIImage?
-
+    let title: String
+    let description: String
+    let imgProgress: UIImage
+    let img: UIImage?
 
     init(title: String, description: String, imgProgress: UIImage, img: UIImage?) {
         self.title = title

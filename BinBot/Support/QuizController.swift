@@ -4,15 +4,14 @@ protocol ResultDelegate: AnyObject {
     func updateQuiz(result: Int, title: String?, num: Int, numSection: Int)
 }
 
-class QuizController: UIViewController {
+final class QuizController: UIViewController {
     private let labelTitle: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "Quiz".localize()
-        labelTitle.font = .systemFont(ofSize: 18, weight: .bold)
-        labelTitle.textAlignment = .center
-
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "Quiz".localize()
+        view.font = .systemFont(ofSize: 18, weight: .bold)
+        view.textAlignment = .center
+        return view
     }()
 
     private lazy var imgView: UIImageView = {
@@ -28,7 +27,6 @@ class QuizController: UIViewController {
         view.textAlignment = .center
         view.lineBreakMode = .byWordWrapping
         view.numberOfLines = 0
-
         return view
     }()
 
@@ -40,7 +38,6 @@ class QuizController: UIViewController {
         view.layer.borderColor = UIColor(red: 1, green: 0.855, blue: 0.267, alpha: 1).cgColor
         view.addTarget(self, action: #selector(btnClickCheck), for: .touchUpInside)
         view.tag = 0
-
         return view
     }()
 
@@ -52,7 +49,6 @@ class QuizController: UIViewController {
         view.layer.borderColor = UIColor(red: 1, green: 0.855, blue: 0.267, alpha: 1).cgColor
         view.addTarget(self, action: #selector(btnClickCheck), for: .touchUpInside)
         view.tag = 1
-
         return view
     }()
 
@@ -62,7 +58,6 @@ class QuizController: UIViewController {
         view.text = "Yes".localize()
         view.font = .systemFont(ofSize: 17, weight: .bold)
         view.textAlignment = .center
-
         return view
     }()
 
@@ -72,7 +67,6 @@ class QuizController: UIViewController {
         view.text = "No".localize()
         view.font = .systemFont(ofSize: 17, weight: .bold)
         view.textAlignment = .center
-
         return view
     }()
 
@@ -85,17 +79,15 @@ class QuizController: UIViewController {
         view.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         view.alpha = 0.5
         view.addTarget(self, action: #selector(tapButtonNext), for: .touchUpInside)
-
         return view
     }()
 
     private let correctLbl: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.font = .systemFont(ofSize: 16, weight: .regular)
-        labelTitle.textAlignment = .right
-
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.font = .systemFont(ofSize: 16, weight: .regular)
+        view.textAlignment = .right
+        return view
     }()
 
     private lazy var correctImg: UIImageView = {
@@ -104,26 +96,7 @@ class QuizController: UIViewController {
         return view
     }()
 
-    private var numberSection = 0
-
-    private var lessonsArray: [[(String, Bool, UIImage?)]] =
-    [
-        [ ("quetion1.1".localize(), true, UIImage(named: "1.1")), ("quetion1.2".localize(), false, UIImage(named: "1.2")), ("quetion1.3".localize(), true, UIImage(named: "1.3")), ("quetion1.4".localize(), false, UIImage(named: "1.4")),
-          ("quetion1.5".localize(), true, UIImage(named: "1.5"))],
-        [ ("quetion2.1".localize(), false, UIImage(named: "2.1")), ("quetion2.2".localize(), true, UIImage(named: "2.2")), ("quetion2.3".localize(), false, UIImage(named: "2.3")), ("quetion2.4".localize(), true, UIImage(named: "2.4")),
-          ("quetion2.5".localize(), false, UIImage(named: "2.5"))],
-        [ ("quetion3.1".localize(), true, UIImage(named: "3.1")), ("quetion3.2".localize(), false, UIImage(named: "3.2")), ("quetion3.3".localize(), true, UIImage(named: "3.3")), ("quetion3.4".localize(), false, UIImage(named: "3.4")),
-          ("quetion3.5".localize(), true, UIImage(named: "3.5"))],
-        [ ("quetion4.1".localize(), false, UIImage(named: "4.1")), ("quetion4.2".localize(), true, UIImage(named: "4.2")), ("quetion4.3".localize(), false, UIImage(named: "4.3")), ("quetion4.4".localize(), true, UIImage(named: "4.4")),
-          ("quetion4.5".localize(), false, UIImage(named: "4.5"))],
-        [ ("quetion5.1".localize(), true, UIImage(named: "5.1")), ("quetion5.2".localize(), false, UIImage(named: "5.2")), ("quetion5.3".localize(), true, UIImage(named: "5.3")), ("quetion5.4".localize(), false, UIImage(named: "5.4")),
-          ("quetion5.5".localize(), true, UIImage(named: "5.5"))],
-        [ ("quetion6.1".localize(), false, UIImage(named: "6.1")), ("quetion6.2".localize(), true, UIImage(named: "6.2")), ("quetion6.3".localize(), false, UIImage(named: "6.3")), ("quetion6.4".localize(), true, UIImage(named: "6.4")),
-          ("quetion6.5".localize(), false, UIImage(named: "6.5"))],
-        [ ("quetion7.1".localize(), true, UIImage(named: "7.1")), ("quetion7.2".localize(), false, UIImage(named: "7.2")), ("quetion7.3".localize(), true, UIImage(named: "7.3")), ("quetion7.4".localize(), false, UIImage(named: "7.4")),
-          ("quetion7.5".localize(), true, UIImage(named: "7.5"))]
-    ]
-
+    private let lessonsArray = StaticContent.shared.lessonsArray
     private var isStep = 0
     private var number = -1
     private var result = 0
@@ -143,9 +116,15 @@ class QuizController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
         navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
 
+        setupView()
+    }
+}
+
+private extension QuizController {
+    func setupView() {
         view.addSubviews(labelTitle, imgView, nextButton, questionLbl, viewYes, viewNo, correctLbl, correctImg)
         viewYes.addSubview(answerLblYes)
         viewNo.addSubview(answerLblNo)
@@ -205,8 +184,12 @@ class QuizController: UIViewController {
     }
 }
 
-extension QuizController {
-    @objc private func tapButtonNext() {
+private extension QuizController {
+    @objc func pop() {
+        navigationController?.popViewController(animated: false)
+    }
+
+    @objc func tapButtonNext() {
         if viewYes.layer.borderWidth != 0 || viewNo.layer.borderWidth != 0 {
             if isStep != 5 && nextButton.alpha == 1  {
                 if !setTitle {
@@ -215,12 +198,16 @@ extension QuizController {
                         correctLbl.text = "Correct".localize()
                         correctImg.image = UIImage(named: "correct")
                         nextButton.setTitle("Got it".localize(), for: .normal)
+                        viewYes.isUserInteractionEnabled = false
+                        viewNo.isUserInteractionEnabled = false
                         setTitle = true
                         return
                     } else {
                         correctLbl.text = "Incorrect".localize()
                         correctImg.image = UIImage(named: "incorrect")
                         nextButton.setTitle("Got it".localize(), for: .normal)
+                        viewYes.isUserInteractionEnabled = false
+                        viewNo.isUserInteractionEnabled = false
                         setTitle = true
                         return
                     }
@@ -240,6 +227,9 @@ extension QuizController {
                         correctImg.image = UIImage()
 
                         setTitle = false
+
+                        viewYes.isUserInteractionEnabled = true
+                        viewNo.isUserInteractionEnabled = true
                     } else {
                         pop()
                         if UserDefaults.standard.integer(forKey: "correct") == 0 {
@@ -250,6 +240,8 @@ extension QuizController {
                         if UserData.dateStartQuiz == nil {
                             UserDefaults.standard.set(date, forKey: UserData.SettingsKeys.dateStartQuiz.rawValue)
                         }
+
+                        UserDefaults.standard.set(date, forKey: UserData.SettingsKeys.dateStartQuiz.rawValue)
 
                         UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isWorkQuiz.rawValue)
 
@@ -280,11 +272,5 @@ extension QuizController: QuizDelegate {
         number = day
         questionLbl.text = lessonsArray[day][isStep].0
         imgView.image = lessonsArray[day][isStep].2
-    }
-}
-
-extension QuizController {
-    @objc private func pop() {
-        navigationController?.popViewController(animated: false)
     }
 }

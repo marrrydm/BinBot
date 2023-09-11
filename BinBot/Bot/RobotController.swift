@@ -1,107 +1,116 @@
 import UIKit
 
-class RobotController: UIViewController {
+final class RobotController: UIViewController {
     private let titleLabel: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "tabbar.robot".localize()
-        labelTitle.font = .systemFont(ofSize: 18, weight: .bold)
-        labelTitle.textAlignment = .center
-
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "tabbar.robot".localize()
+        view.font = .systemFont(ofSize: 18, weight: .bold)
+        view.textAlignment = .center
+        return view
     }()
 
     private lazy var nextButton: UIButton = {
-        let nextButton = UIButton()
-        nextButton.backgroundColor = UIColor(red: 0.913, green: 0.283, blue: 0.158, alpha: 1)
-        nextButton.layer.cornerRadius = 6
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitle("Stop the robot".localize(), for: .normal)
-        nextButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
-        nextButton.addTarget(self, action: #selector(stopRobot), for: .touchUpInside)
-
-        return nextButton
+        let view = UIButton()
+        view.backgroundColor = UIColor(red: 0.913, green: 0.283, blue: 0.158, alpha: 1)
+        view.layer.cornerRadius = 6
+        view.setTitleColor(.white, for: .normal)
+        view.setTitle("Stop the robot".localize(), for: .normal)
+        view.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
+        view.addTarget(self, action: #selector(stopRobot), for: .touchUpInside)
+        return view
     }()
 
     private let viewCancel: UIView = {
-        let viewDark = UIView()
-        viewDark.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
-        viewDark.layer.cornerRadius = 20
-        viewDark.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        viewDark.isHidden = true
-        return viewDark
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
+        view.layer.cornerRadius = 20
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.isHidden = true
+        return view
     }()
 
-    private let imgOption = UIImageView(image: UIImage(named: "imgOption"))
-    private let imgClose = UIImageView(image: UIImage(named: "imgClose"))
+    private let imgOption: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "imgOption")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+
+    private lazy var imgClose: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "imgClose")
+        view.contentMode = .scaleAspectFit
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelRobot)))
+        return view
+    }()
+
 
     private let optionLbl: UILabel = {
-        let timeTitle = UILabel()
-        timeTitle.textColor = .white
-        timeTitle.font = .systemFont(ofSize: 18, weight: .bold)
-        timeTitle.textAlignment = .center
-        timeTitle.text = "doneBot".localize()
-        timeTitle.numberOfLines = 0
-        timeTitle.lineBreakMode = .byWordWrapping
-
-        return timeTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 18, weight: .bold)
+        view.textAlignment = .center
+        view.text = "doneBot".localize()
+        view.numberOfLines = 0
+        view.lineBreakMode = .byWordWrapping
+        return view
     }()
 
     private lazy var confirmButton: UIButton = {
-        let nextButton = UIButton()
-        nextButton.backgroundColor = UIColor(red: 0.95, green: 0.32, blue: 0.19, alpha: 1)
-        nextButton.layer.cornerRadius = 6
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitle("Confirm".localize(), for: .normal)
-        nextButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
-        nextButton.addTarget(self, action: #selector(goResult), for: .touchUpInside)
-
-        return nextButton
+        let view = UIButton()
+        view.backgroundColor = UIColor(red: 0.95, green: 0.32, blue: 0.19, alpha: 1)
+        view.layer.cornerRadius = 6
+        view.setTitleColor(.white, for: .normal)
+        view.setTitle("Confirm".localize(), for: .normal)
+        view.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
+        view.addTarget(self, action: #selector(goResult), for: .touchUpInside)
+        return view
     }()
 
     private lazy var cancelButton: UIButton = {
-        let nextButton = UIButton()
-        nextButton.backgroundColor = UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1)
-        nextButton.layer.cornerRadius = 6
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitle("Cancel".localize(), for: .normal)
-        nextButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
-        nextButton.addTarget(self, action: #selector(cancelRobot), for: .touchUpInside)
-
-        return nextButton
+        let view = UIButton()
+        view.backgroundColor = UIColor(red: 0.26, green: 0.276, blue: 0.33, alpha: 1)
+        view.layer.cornerRadius = 6
+        view.setTitleColor(.white, for: .normal)
+        view.setTitle("Cancel".localize(), for: .normal)
+        view.titleLabel?.font = .systemFont(ofSize: 13, weight: .bold)
+        view.addTarget(self, action: #selector(cancelRobot), for: .touchUpInside)
+        return view
     }()
 
     private let balanceLabel: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "Đ1995,67"
-        labelTitle.font = .systemFont(ofSize: 34, weight: .bold)
-        labelTitle.textAlignment = .left
-
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 34, weight: .bold)
+        view.textAlignment = .left
+        return view
     }()
 
     private let profitLabel: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Profit:".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Profit:".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let profitLabelVal: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.125, green: 0.745, blue: 0.455, alpha: 1)
-        labelTitle.text = "Đ179,11"
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.125, green: 0.745, blue: 0.455, alpha: 1)
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
-    private let imgIcon = UIImageView(image: UIImage(named: "iconBino"))
+    private let imgIcon: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "iconBino")
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
 
     private var viewForItems1: UIView = {
         let view = UIView()
@@ -127,164 +136,167 @@ class RobotController: UIViewController {
     private let imgIcon8 = UIImageView(image: UIImage(named: "alarm"))
 
     private let itemTitle1: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Status".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Status".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle2: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Expired in".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Expired in".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle3: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Trading asset".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Trading asset".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle4: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Amount".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Amount".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle5: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Strategy".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Strategy".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle6: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Indicators".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Indicators".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle7: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Risk management".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Risk management".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemTitle8: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
-        labelTitle.text = "Profit limit".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .regular)
-        labelTitle.textAlignment = .left
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 0.584, green: 0.612, blue: 0.663, alpha: 1)
+        view.text = "Profit limit".localize()
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textAlignment = .left
+        return view
     }()
 
     private let itemVal1: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = UIColor(red: 1, green: 0.855, blue: 0.267, alpha: 1)
-        labelTitle.text = "Searching".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = UIColor(red: 1, green: 0.855, blue: 0.267, alpha: 1)
+        view.text = "Searching".localize()
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal2: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "00:59"
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "00:59"
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal3: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "EUR/USD"
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "EUR/USD"
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal4: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "Đ10"
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "Đ10"
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal5: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "Auto".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "Auto".localize()
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal6: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "ai".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "ai".localize()
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal7: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "Optimal".localize()
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "Optimal".localize()
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let itemVal8: UILabel = {
-        let labelTitle = UILabel()
-        labelTitle.textColor = .white
-        labelTitle.text = "Đ20"
-        labelTitle.font = .systemFont(ofSize: 13, weight: .bold)
-        labelTitle.textAlignment = .right
-        return labelTitle
+        let view = UILabel()
+        view.textColor = .white
+        view.text = "Đ20"
+        view.font = .systemFont(ofSize: 13, weight: .bold)
+        view.textAlignment = .right
+        return view
     }()
 
     private let viewDark: UIView = {
-        let viewDark = UIView()
-        viewDark.backgroundColor = UIColor(red: 0.078, green: 0.11, blue: 0.157, alpha: 0.6)
-        viewDark.isHidden = true
-        return viewDark
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.078, green: 0.11, blue: 0.157, alpha: 0.6)
+        view.isHidden = true
+        return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
-        imgClose.isUserInteractionEnabled = true
-        imgClose.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelRobot)))
-        imgIcon.contentMode = .scaleAspectFit
 
+        setupUI()
+    }
+}
+
+private extension RobotController {
+    private func setupUI() {
         view.addSubviews(titleLabel, nextButton, balanceLabel, profitLabel, profitLabelVal, imgIcon, viewForItems1, viewForItems2, viewDark, viewCancel)
         viewCancel.addSubviews(imgClose, imgOption, optionLbl, cancelButton, confirmButton)
         viewForItems1.addSubviews(imgIcon1, imgIcon2, imgIcon3, imgIcon4, itemTitle1, itemTitle2, itemTitle3, itemTitle4, itemVal1, itemVal2, itemVal3, itemVal4)
@@ -502,18 +514,18 @@ class RobotController: UIViewController {
     }
 }
 
-extension RobotController {
-    @objc private func goResult() {
+private extension RobotController {
+    @objc func goResult() {
         let vc = ResultController()
         navigationController?.pushViewController(vc, animated: false)
     }
 
-    @objc private func stopRobot() {
+    @objc func stopRobot() {
         viewCancel.isHidden = false
         viewDark.isHidden = false
     }
 
-    @objc private func cancelRobot() {
+    @objc func cancelRobot() {
         viewCancel.isHidden = true
         viewDark.isHidden = true
     }
