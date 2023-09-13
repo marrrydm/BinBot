@@ -125,8 +125,8 @@ final class SupportController: UIViewController {
         date2 += (60 * 60 * 24)
 
         let newTime = secondsToHoursMinutesSeconds(seconds: Int( date1.timeIntervalSince(date2)))
-        
-        if newTime.0 <= 0 && newTime.1 <= 0 && newTime.2 <= 0 {
+
+        if (newTime.0 <= 0 || newTime.0 == 24) && newTime.1 <= 0 && newTime.2 <= 0 {
             UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isWorkQuiz.rawValue)
         } else {
             UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.isWorkQuiz.rawValue)
@@ -151,7 +151,7 @@ final class SupportController: UIViewController {
         } else {
             let newDay = UserData.dayQuiz
             UserDefaults.standard.set((newDay + 1), forKey: "dayQuiz")
-            if (newDay + 1) < 7 {
+            if (UserData.dayQuiz + 1) < 7 {
                 day = UserData.dayQuiz
                 isFirstHidden()
 
