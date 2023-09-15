@@ -52,8 +52,4 @@ final class StaticContent {
         [ ("quetion7.1".localize(), true, UIImage(named: "7.1")), ("quetion7.2".localize(), false, UIImage(named: "7.2")), ("quetion7.3".localize(), true, UIImage(named: "7.3")), ("quetion7.4".localize(), false, UIImage(named: "7.4")),
           ("quetion7.5".localize(), true, UIImage(named: "7.5"))]
     ]
-
-    private init() {
-
-    }
 }
