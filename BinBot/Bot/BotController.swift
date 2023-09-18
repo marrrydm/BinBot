@@ -787,11 +787,22 @@ extension BotController {
         viewConfirm.isHidden = true
     }
 
-    @objc private func goNext() {
-//        viewAccount.isHidden = false
+    @objc private func goNext(sender: UITapGestureRecognizer) {
+        UserDefaults.standard.set(strategyLblConfirmVal.text, forKey: UserData.SettingsKeys.strategy.rawValue)
+        UserDefaults.standard.set(profitLblConfirmVal.text, forKey: UserData.SettingsKeys.profit.rawValue)
+        UserDefaults.standard.set(riskLblConfirmVal.text, forKey: UserData.SettingsKeys.risk.rawValue)
+        UserDefaults.standard.set(assetValueLabel.text, forKey: UserData.SettingsKeys.pairVal.rawValue)
+
+        //        viewAccount.isHidden = false
         viewConfirm.isHidden = true
-        let vc = RobotController()
-        navigationController?.pushViewController(vc, animated: false)
+        //        viewDark.isHidden = false
+        //        activityIndicator.startAnimating()
+
+        UserDefaults.standard.set(true, forKey: UserData.SettingsKeys.isWork.rawValue)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let vc = RobotController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     @objc private func tapOnStrategy() {

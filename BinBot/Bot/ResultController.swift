@@ -190,10 +190,18 @@ class ResultController: UIViewController {
 
 extension ResultController {
     @objc private func tapButtonNext() {
+        UserDefaults.standard.set(nil, forKey: UserData.SettingsKeys.dateAlgorithmStart.rawValue)
+        UserDefaults.standard.set(0, forKey: UserData.SettingsKeys.profitAfterActive.rawValue)
+        UserDefaults.standard.set(0, forKey: UserData.SettingsKeys.sumProfitAfterActive.rawValue)
+
         self.navigationController?.popToRootViewController(animated: true)
     }
 
     @objc private func closePage() {
+        UserDefaults.standard.set(nil, forKey: UserData.SettingsKeys.dateAlgorithmStart.rawValue)
+        UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isWork.rawValue)
+        UserDefaults.standard.set(0, forKey: UserData.SettingsKeys.profitAfterActive.rawValue)
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
 }

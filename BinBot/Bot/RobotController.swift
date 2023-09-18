@@ -286,12 +286,207 @@ final class RobotController: UIViewController {
         return view
     }()
 
+    private var timer = Timer()
+    private var imgStatusRnd = UIImage()
+    private var timerCount = 63
+    private var minProfitVal = 10.0
+    private var profitAfterActive = 0.0
+    private var sumProfitAfterActive = 0.0
+    private var amountAfterActive = 0.0
+    private var stopBalance = 0
+    private var resultNum = 0
+    private var isStep = false
+    private var profitIsNil = false
+
+    weak var delegate: ResultDelegate?
+
+    private var checkTimer: Bool = true {
+        didSet {
+            switch (checkTimer) {
+            case true:
+                timerCount = 59
+                timer.invalidate()
+                timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+                if String(timerCount).count == 1 {
+                    itemVal2.text = "00:0\(timerCount)"
+                } else {
+                    itemVal2.text = "00:\(timerCount)"
+                }
+                timerCount = 60
+
+                var balance = UserData.balance
+
+                if isStep && !profitIsNil {
+                    let percent = (Double(UserData.profit) ?? 1.0) / 100
+                    amountAfterActive = Double.random(in: (percent * 10)...Double(percent * 30))
+                    itemVal4.text = "Đ\(Int(amountAfterActive))"
+
+                    let sign = Bool.random() ? 1.0 : -1.0
+                    if sign == 1.0 {
+                        profitAfterActive = amountAfterActive * Double.random(in: 0.25..<0.45) + amountAfterActive
+                    } else {
+                        profitAfterActive = amountAfterActive - amountAfterActive * Double.random(in: 0.05..<0.15)
+                    }
+                    sumProfitAfterActive += profitAfterActive
+                    UserDefaults.standard.set(Int(sumProfitAfterActive), forKey: UserData.SettingsKeys.sumProfitAfterActive.rawValue)
+                    UserDefaults.standard.set(Int(profitAfterActive), forKey: UserData.SettingsKeys.profitAfterActive.rawValue)
+
+                    profitLabelVal.text = "Đ\(Int(sumProfitAfterActive))"
+                    balance = UserData.balance + Int(sumProfitAfterActive)
+                    balanceLabel.text = "Đ\(balance)"
+
+                    if UserData.profit != "-" {
+                        if sumProfitAfterActive >= Double(UserData.profit)! {
+                            goResult()
+                            timerCount = 70
+                        }
+                    }
+                } else if isStep && profitIsNil {
+                    // Отключение через час
+                    let date1 = Date()
+
+                    if UserData.dateAlgorithmStart == nil {
+                        UserDefaults.standard.set(date1, forKey: UserData.SettingsKeys.dateAlgorithmStart.rawValue)
+                    }
+
+                    let date2 = UserData.dateAlgorithmStart!
+
+                    let between = abs(hourBetween(start: date1, end: date2))
+
+                    amountAfterActive = Double.random(in: 10..<50)
+                    itemVal4.text = "Đ\(Int(amountAfterActive))"
+
+                    let sign = Bool.random() ? 1.0 : -1.0
+                    if sign == 1.0 {
+                        profitAfterActive = amountAfterActive * Double.random(in: 0.25..<0.45) + amountAfterActive
+                    } else {
+                        profitAfterActive = amountAfterActive - amountAfterActive * Double.random(in: 0.05..<0.15)
+                    }
+
+                    sumProfitAfterActive += profitAfterActive
+                    UserDefaults.standard.set(Int(sumProfitAfterActive), forKey: UserData.SettingsKeys.sumProfitAfterActive.rawValue)
+
+                    UserDefaults.standard.set(Int(profitAfterActive), forKey: UserData.SettingsKeys.profitAfterActive.rawValue)
+
+                    profitLabelVal.text = "Đ\(Int(sumProfitAfterActive))"
+                    balance = UserData.balance + Int(sumProfitAfterActive)
+                    balanceLabel.text = "Đ\(balance)"
+
+                    if between >= 1 {
+                        if UserData.dateAlgorithmStart != nil {
+                            UserDefaults.standard.set(nil, forKey: UserData.SettingsKeys.dateAlgorithmStart.rawValue)
+                        }
+                        if profitIsNil {
+                            goResult()
+                            timerCount = 70
+                            UserDefaults.standard.set(false, forKey: UserData.SettingsKeys.isWork.rawValue)
+                        } else {
+                            balance += Int(UserData.profit)!
+                        }
+                    }
+                } else {
+                    isStep = true
+                }
+            case false:
+                timerCount -= 1
+                if String(timerCount).count == 1 {
+                    itemVal2.text = "00:0\(timerCount)"
+                } else {
+                    itemVal2.text = "00:\(timerCount)"
+                }
+            }
+        }
+    }
+
+    private func hourBetween(start: Date, end: Date) -> Int {
+        Calendar.current.dateComponents([.hour], from: start, to: end).hour!
+    }
+
+    @objc func update() {
+        switch timerCount {
+        case 70: break
+        case 60:
+            itemVal1.text = "Searching".localize()
+            itemVal1.textColor = UIColor(red: 1, green: 0.855, blue: 0.267, alpha: 1)
+            imgIcon1.image = UIImage(named: "status 1")
+            itemVal2.text = "00:59"
+            checkTimer = false
+        case 1...59:
+            itemVal1.text = "Active".localize()
+            itemVal1.textColor = UIColor(red: 0.125, green: 0.745, blue: 0.455, alpha: 1)
+            imgIcon1.image = UIImage(named: "active")
+            checkTimer = false
+        default:
+            checkTimer = true
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(red: 0.165, green: 0.169, blue: 0.188, alpha: 1)
 
         setupUI()
+
+        itemVal5.text = UserData.strategy.localize()
+        itemVal7.text = UserData.risk.localize()
+        itemVal8.text = UserData.profit.localize()
+        itemVal3.text = UserData.pairVal
+
+        if UserData.profitAfterActive == 0 {
+            profitLabelVal.text = "0" + "Đ"
+        } else {
+            profitLabelVal.text = "Đ\(UserData.sumProfitAfterActive)"
+        }
+
+        if UserData.sumProfitAfterActive != 0 {
+            let balance = UserData.balance + UserData.sumProfitAfterActive
+            balanceLabel.text = "Đ\(balance)"
+        } else {
+            balanceLabel.text = "Đ\(UserData.balance)"
+        }
+
+        sumProfitAfterActive = Double(UserData.sumProfitAfterActive)
+
+        if itemVal8.text != "Off".localize() {
+            profitAfterActive = Double(itemVal8.text!)!
+            itemVal8.text = "Đ\(UserData.profit.localize())"
+            resultNum = Int(UserData.profit)!
+            stopBalance = UserData.balance + Int(UserData.profit)!
+            profitIsNil = false
+            isStep = false
+            resultNum = Int(UserData.profit)!
+            let percent = resultNum / 100
+            amountAfterActive = Double.random(in: Double((percent * 10))..<Double((percent * 30)))
+            itemVal4.text = "Đ\(Int(amountAfterActive))"
+        } else {
+            profitIsNil = true
+            itemVal8.text = "Off".localize()
+            if UserData.sumProfitAfterActive != 0 {
+                stopBalance = UserData.balance + UserData.sumProfitAfterActive
+                balanceLabel.text = "Đ\(stopBalance)"
+            }
+            isStep = false
+        }
+        let date = Date()
+        if UserData.dateAlgorithmStart == nil {
+            UserDefaults.standard.set(date, forKey: UserData.SettingsKeys.dateAlgorithmStart.rawValue)
+        }
+
+        if UserData.sumProfitAfterActive != 0 {
+            let balance = UserData.balance + UserData.sumProfitAfterActive
+            balanceLabel.text = "Đ\(balance)"
+            profitLabelVal.text = "Đ\(UserData.sumProfitAfterActive)"
+            if itemVal8.text == "Off".localize() {
+                resultNum = UserData.sumProfitAfterActive
+            } else {
+                if UserData.sumProfitAfterActive < resultNum {
+                    balanceLabel.text = "Đ\(balance)"
+                }
+            }
+        }
+        isStep = false
+        checkTimer = true
     }
 }
 
